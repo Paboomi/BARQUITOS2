@@ -17,7 +17,7 @@ public class Tablero {
     private int barcoFilas;
     private int barcoColumnas;
     private boolean barcoOrientacion;
-    private String iconoagua = "/com/mycompany/barquitos/frontend/multimedia/water.png";
+    private String iconoagua = "/com/mycompany/barquitos/frontend/water.png";
     
     public Tablero(JPanel pnlTablero, int filas, int columnas, BarcoDialog barco) {
         this.pnlTablero = pnlTablero;
@@ -55,14 +55,14 @@ public class Tablero {
                 } else if (fila == 0) { // Agregar letras en la parte superior
                     if (columna <= 10) {
                         JLabel letraLabel = new JLabel(String.valueOf(letras[columna - 1]));
-                        letraLabel.setForeground(Color.WHITE);
+                        letraLabel.setForeground(Color.ORANGE);
                         letraLabel.setHorizontalAlignment(JLabel.CENTER);
                         pnlTablero.add(letraLabel);
                     }
                 } else if (columna == 0) { // Agregar números a la izquierda
                     if (fila <= 10) {
                         JLabel numeroLabel = new JLabel(String.valueOf(fila - 1));
-                        numeroLabel.setForeground(Color.WHITE);
+                        numeroLabel.setForeground(Color.ORANGE);
                         numeroLabel.setHorizontalAlignment(JLabel.CENTER);
                         pnlTablero.add(numeroLabel);
                     }

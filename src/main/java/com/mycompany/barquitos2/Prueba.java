@@ -4,19 +4,19 @@
  */
 package com.mycompany.barquitos2;
 
+
 /**
  *
  * @author Dan
  */
-import java.io.File;
 
 public class Prueba {
    
     public static void main(String[] args) {
-        String icono = "/com/mycompany/barquitos2/frontend/uwu.png";
-        File archivo = new File(icono);
+      String icono = "/com/mycompany/barquitos/frontend/uwu.png";
+        java.net.URL url = Prueba.class.getResource(icono);
 
-        if (archivo.canRead()) {
+        if (url != null) {
             System.out.println("El archivo es accesible");
         } else {
             System.out.println("El archivo no es accesible");

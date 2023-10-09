@@ -40,7 +40,7 @@ public class Juego extends javax.swing.JFrame {
         pnlTablero.setLayout(new java.awt.GridLayout(filas, columnas));
         pnlTablero.setBackground(Color.BLACK);
         pnlTableroTiros.setLayout(new java.awt.GridLayout(filas, columnas));
-        pnlTableroTiros.setBackground(Color.BLACK);
+        pnlTableroTiros.setBackground(Color.WHITE);
         pnlTablero.setSize(300,300);
         pnlTablero.setPreferredSize(new Dimension(300,300));
         pnlTableroTiros.setPreferredSize(new Dimension(300,300));

@@ -18,7 +18,7 @@ public class TableroTiros {
     private int filas;
     private int columnas;
     
-    private String icono = "/com/mycompany/barquitos2/frontend/multimedia/uwu.png";
+    private String icono = "/com/mycompany/barquitos/frontend/uwu.png";
     
 
     public TableroTiros(JPanel pnlTableroTiro, int filas, int columnas) {
@@ -47,14 +47,14 @@ public class TableroTiros {
                 } else if (fila == 0) { // Agregar letras en la parte superior
                     if (columna <= 10) {
                         JLabel letraLabel = new JLabel(String.valueOf(letras[columna - 1]));
-                        letraLabel.setForeground(Color.WHITE);
+                        letraLabel.setForeground(Color.ORANGE);
                         letraLabel.setHorizontalAlignment(JLabel.CENTER);
                         pnlTableroTiro.add(letraLabel);
                     }
                 } else if (columna == 0) { // Agregar números a la izquierda
                     if (fila <= 10) {
                         JLabel numeroLabel = new JLabel(String.valueOf(fila - 1));
-                        numeroLabel.setForeground(Color.WHITE);
+                        numeroLabel.setForeground(Color.ORANGE);
                         numeroLabel.setHorizontalAlignment(JLabel.CENTER);
                         pnlTableroTiro.add(numeroLabel);
                     }

@@ -4,20 +4,44 @@
  */
 package com.mycompany.barquitos2.frontend;
 
-import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 public class Casilla extends JLabel {
+    String icono;
+    Tablero tablero = new Tablero();
+    TableroTiros tableroTiros = new TableroTiros();
 
-
-    public Casilla() {
+    public Casilla(String icon, Tablero tablero) {
         super();
-        setOpaque(true);
-        setBackground(Color.BLACK);
-        setBorder(new LineBorder(Color.PINK, 1));
-        setHorizontalAlignment(SwingConstants.CENTER);
+        this.icono = icon;
+        this.tablero = tablero;
+//        setOpaque(true);
+//        setBackground(Color.BLACK);
+//        setBorder(new LineBorder(Color.PINK, 1));
+//        setHorizontalAlignment(SwingConstants.CENTER);
+        setIcono();
+    }
+    
+        public Casilla(String icon) {
+        super();
+        this.icono = icon;
+//        setOpaque(true);
+//        setBackground(Color.BLACK);
+//        setBorder(new LineBorder(Color.PINK, 1));
+//        setHorizontalAlignment(SwingConstants.CENTER);
+            setIcon(new ImageIcon(getClass().getResource(icon)));
+//setIcono();
+    }
+    
+    public void setIcono(){
+        setIcon(new ImageIcon(getClass().getResource(icono)));
+    }
+    
+    public void cambiarIcono(String iconoNuevo){
+        setIcon(new ImageIcon(getClass().getResource(iconoNuevo)));
     }
 
 }

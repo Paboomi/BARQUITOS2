@@ -8,6 +8,11 @@ package com.mycompany.barquitos2.frontend;
  *
  * @author Dan
  */
-public class CasillaCarrier {
+public class CasillaCarrier extends Casilla {
+    Tablero tablero = new Tablero();
     
+    public CasillaCarrier(String icono){
+        super(icono);
+            
+    }
 }

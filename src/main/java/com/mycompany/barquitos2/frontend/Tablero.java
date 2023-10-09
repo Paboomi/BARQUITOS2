@@ -17,6 +17,7 @@ public class Tablero {
     private int barcoFilas;
     private int barcoColumnas;
     private boolean barcoOrientacion;
+    private String iconoagua = "/com/mycompany/barquitos/frontend/multimedia/water.png";
     
     public Tablero(JPanel pnlTablero, int filas, int columnas, BarcoDialog barco) {
         this.pnlTablero = pnlTablero;
@@ -35,6 +36,10 @@ public class Tablero {
 //        this.filas = filas;
 //        this.columnas = columnas;
         celdas = new Casilla[filas][columnas];
+    }
+    
+    public Tablero(){
+        
     }
 
     public void mostrarTablero() {
@@ -62,11 +67,13 @@ public class Tablero {
                         pnlTablero.add(numeroLabel);
                     }
                 } else { // Agregar celdas de 10x10
-                    pnlTablero.add(celdas[fila - 1][columna - 1] = new Casilla());
+                    pnlTablero.add(celdas[fila - 1][columna - 1] = new Casilla(iconoagua));
                 }
             }
         }
     }
+    
+
     
     public void mostrarBarco() {
     if (barcoOrientacion) {

@@ -18,6 +18,8 @@ public class TableroTiros {
     private int filas;
     private int columnas;
     
+    private String icono = "/com/mycompany/barquitos2/frontend/multimedia/uwu.png";
+    
 
     public TableroTiros(JPanel pnlTableroTiro, int filas, int columnas) {
         this.pnlTableroTiro = pnlTableroTiro;
@@ -26,6 +28,10 @@ public class TableroTiros {
        
         this.pnlTableroTiro.setLayout(new java.awt.GridLayout(filas, columnas));
         celdas = new Casilla[filas][columnas];
+    }
+    
+    public TableroTiros(){
+        
     }
 
     public void mostrarTablero() {
@@ -53,7 +59,7 @@ public class TableroTiros {
                         pnlTableroTiro.add(numeroLabel);
                     }
                 } else { // Agregar celdas de 10x10
-                    pnlTableroTiro.add(celdas[fila - 1][columna - 1] = new Casilla());
+                    pnlTableroTiro.add(celdas[fila - 1][columna - 1] = new Casilla(icono));
                 }
             }
         }

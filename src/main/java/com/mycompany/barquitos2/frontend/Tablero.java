@@ -9,16 +9,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Tablero {
+    BarcoDialog barco = new BarcoDialog();
     private JPanel pnlTablero;
     private Casilla[][] celdas;
     private int filas;
     private int columnas;
+    private int barcoFilas;
+    private int barcoColumnas;
+    private boolean barcoOrientacion;
     
-    public Tablero(JPanel pnlTablero, int filas, int columnas) {
+    public Tablero(JPanel pnlTablero, int filas, int columnas, BarcoDialog barco) {
         this.pnlTablero = pnlTablero;
         this.filas = filas;
         this.columnas = columnas;
+        this.barco = barco;
         this.pnlTablero.setLayout(new java.awt.GridLayout(filas, columnas));
+        celdas = new Casilla[filas][columnas];
+        barcoFilas = barco.getFila();
+        barcoColumnas = barco.getColumna();
+        barcoOrientacion=barco.getOrientacion();
+      
+    }
+    
+    public Tablero(int filas, int columnas){
+//        this.filas = filas;
+//        this.columnas = columnas;
         celdas = new Casilla[filas][columnas];
     }
 
@@ -53,23 +68,25 @@ public class Tablero {
         }
     }
     
-    public void mostrarBarco(int filaInicio, int columnaInicio, boolean esHorizontal) {
-    if (esHorizontal) {
+    public void mostrarBarco() {
+    if (barcoOrientacion) {
         for (int i = 0; i < 5; i++) {
-            if (filaInicio >= 1 && filaInicio <= 10 && columnaInicio + i >= 1 && columnaInicio + i <= 10) {
-                celdas[filaInicio - 1][columnaInicio + i - 1].setBackground(Color.RED);
+            if (barcoFilas >= 1 && barcoFilas <= 10 && barcoColumnas + i >= 1 && barcoColumnas + i <= 10) {
+                celdas[barcoFilas - 1][barcoColumnas + i - 1].setBackground(Color.RED);
             }
         }
     } else { // Vertical
         for (int i = 0; i < 5; i++) {
-            if (filaInicio + i >= 1 && filaInicio + i <= 10 && columnaInicio >= 1 && columnaInicio <= 10) {
-                celdas[filaInicio + i - 1][columnaInicio - 1].setBackground(Color.RED);
+            if (barcoFilas + i >= 1 && barcoFilas + i <= 10 && barcoColumnas >= 1 && barcoColumnas <= 10) {
+                celdas[barcoFilas + i - 1][barcoColumnas - 1].setBackground(Color.RED);
             }
         }
     }
 }
 
-
+    
+   
+    
 }
 
 //    private Casilla getTablero(int x, int y){

@@ -29,8 +29,9 @@ public class Juego extends javax.swing.JFrame {
     public Juego(int filas, int columnas) {
 
          initComponents();
-         ColocarBarcoDialog dialog = new ColocarBarcoDialog(this);
-        this.filas = filas;
+        BarcoDialog barco = new BarcoDialog(this);
+        barco.setVisible(true);
+         this.filas = filas;
         this.columnas = columnas;
         setTitle("XDDD");
         setLayout(new GridLayout(1,2));
@@ -48,15 +49,15 @@ public class Juego extends javax.swing.JFrame {
         pack(); // Empaquetar la ventana para que los paneles tengan un tamaño inicial adecuado
         setLocationRelativeTo(null); // Centrar la ventana en la pantalla
         setExtendedState(JFrame.MAXIMIZED_BOTH); // Abre la ventana en pantalla completa
-        
-        dialog.setVisible(true);
-        filaBarco = dialog.getFila();
-        columnaBarco = dialog.getColumna();
-        //orientacion = dialog.getOrientacion();
-        Tablero tablero = new Tablero(pnlTablero, filas, columnas);
-        tablero.mostrarTablero();
+         Tablero tablero = new Tablero(pnlTablero, filas, columnas, barco);
+       
         TableroTiros tablerotiros = new TableroTiros(pnlTableroTiros, filas, columnas);
+   
         tablerotiros.mostrarTablero();
+         tablero.mostrarTablero();
+        tablero.mostrarBarco();
+      
+
     }                     
 
     @SuppressWarnings("unchecked")

@@ -44,7 +44,7 @@ public class ColocarBarcoDialog extends javax.swing.JDialog {
         setTitle("Colocar Barco");
         setSize(300, 150);
         setLayout(new FlowLayout());
-
+        tablero = new Tablero(10,10);
         JLabel filaLabel = new JLabel("Fila:");
         filaTextField = new JTextField(5);
         JLabel columnaLabel = new JLabel("Columna:");
@@ -57,7 +57,7 @@ public class ColocarBarcoDialog extends javax.swing.JDialog {
         orientacionGroup.add(verticalRadioButton);
 
         aceptarButton = new JButton("Aceptar");
-
+       // agregarListener();
         add(filaLabel);
         add(filaTextField);
         add(columnaLabel);
@@ -67,51 +67,32 @@ public class ColocarBarcoDialog extends javax.swing.JDialog {
         add(verticalRadioButton);
         add(aceptarButton);
 
-        // Crea la cuadrícula de casillas
-        tableroPanel = new JPanel(new GridLayout(10, 10));
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                JButton casillaButton = new JButton();
-                casillaButton.setBackground(Color.WHITE);
-                casillaButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Obtiene la fila y la columna de la casilla seleccionada
-                        int fila = Integer.parseInt(filaTextField.getText());
-                        int columna = Integer.parseInt(columnaTextField.getText());
-
-                        // Asigna la casilla seleccionada al barco
-                        if (horizontalRadioButton.isSelected()) {
-                            tableroPanel.getComponent(fila * 10 + columna).setBackground(Color.RED);
-                        } else {
-                            tableroPanel.getComponent(columna * 10 + fila).setBackground(Color.RED);
-                        }
-                    }
-                });
-                tableroPanel.add(casillaButton);
-            }
-        }
-
-        add(tableroPanel);
     }
+    
+// Agrega métodos para obtener los valores ingresados por el jugador
 
-    // Agrega métodos para obtener los valores ingresados por el jugador
-
-    private void setFila() {
-        fila = Integer.parseInt(filaTextField.getText());
+public int getFila() {
+    String filaText = filaTextField.getText().trim(); // Obtener el texto y eliminar espacios en blanco
+    if (!filaText.isEmpty()) {
+        return Integer.parseInt(filaText);
+    } else {
+        // Manejar el caso en el que el campo está vacío, por ejemplo, lanzando una excepción o devolviendo un valor predeterminado.
+        // En este ejemplo, se lanza una excepción, pero puedes manejarlo de acuerdo a tus necesidades.
+        throw new NumberFormatException("El campo de fila está vacío.");
     }
+}
 
-    private void setColumna() {
-        columna = Integer.parseInt(columnaTextField.getText());
+public int getColumna() {
+    String columnaText = columnaTextField.getText().trim(); // Obtener el texto y eliminar espacios en blanco
+    if (!columnaText.isEmpty()) {
+        return Integer.parseInt(columnaText);
+    } else {
+        // Manejar el caso en el que el campo está vacío, por ejemplo, lanzando una excepción o devolviendo un valor predeterminado.
+        // En este ejemplo, se lanza una excepción, pero puedes manejarlo de acuerdo a tus necesidades.
+        throw new NumberFormatException("El campo de columna está vacío.");
     }
+}
 
-    public int getFila() {
-        return Integer.parseInt(filaTextField.getText());
-    }
-
-    public int getColumna() {
-        return Integer.parseInt(columnaTextField.getText());
-    }
     
 //// Dentro del ActionListener del botón "Aceptar"
 //aceptarButton.addActionListener(new ActionListener() {
@@ -128,22 +109,26 @@ public class ColocarBarcoDialog extends javax.swing.JDialog {
 //    }
 //});
 
-private void agregarListener(){
-    // Dentro del ActionListener del botón "Aceptar"
-aceptarButton.addActionListener(new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        int fila = Integer.parseInt(filaTextField.getText());
-        int columna = Integer.parseInt(columnaTextField.getText());
-
-        if (horizontalRadioButton.isSelected()) {
-            tablero.mostrarBarco(fila, columna, true);
-        } else {
-            tablero.mostrarBarco(fila, columna, false);
-        }
-    }
-});
-}
+//private void agregarListener(){
+//    // Dentro del ActionListener del botón "Aceptar"
+//aceptarButton.addActionListener(new ActionListener() {
+//    @Override
+//    public void actionPerformed(ActionEvent e) {
+//        int fila = Integer.parseInt(filaTextField.getText());
+//        int columna = Integer.parseInt(columnaTextField.getText());
+//
+//        if (horizontalRadioButton.isSelected()) {
+//            tablero.mostrarBarco(fila, columna, true);
+//           
+//        } else {
+//            tablero.mostrarBarco(fila, columna, false);
+//           
+//        }
+//        
+//        dispose();
+//    }
+//});
+//}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
